@@ -1,0 +1,2 @@
+pod 'EstimoteSDK'
+pod 'Parse'
