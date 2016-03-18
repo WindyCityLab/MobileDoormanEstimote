@@ -12,9 +12,13 @@
 		1909F3D91C9A1603002A91B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1909F3D71C9A1603002A91B3 /* Main.storyboard */; };
 		1909F3DB1C9A1603002A91B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1909F3DA1C9A1603002A91B3 /* Assets.xcassets */; };
 		1909F3DE1C9A1603002A91B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1909F3DC1C9A1603002A91B3 /* LaunchScreen.storyboard */; };
+		192E07901C9A16C600FFA4A9 /* temp.m in Sources */ = {isa = PBXBuildFile; fileRef = 192E078F1C9A16C600FFA4A9 /* temp.m */; };
+		193F94581C9AC2AA00D37658 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F94571C9AC2AA00D37658 /* Location.swift */; };
+		4F791F2B6DC5FDB33E148EBD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFE9B55D60621E7D5D9EC93 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0DFE9B55D60621E7D5D9EC93 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1909F3D01C9A1603002A91B3 /* MobileDoorman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileDoorman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1909F3D31C9A1603002A91B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1909F3D51C9A1603002A91B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +26,11 @@
 		1909F3DA1C9A1603002A91B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1909F3DD1C9A1603002A91B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1909F3DF1C9A1603002A91B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		192E078E1C9A16C600FFA4A9 /* MobileDoorman-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MobileDoorman-Bridging-Header.h"; sourceTree = "<group>"; };
+		192E078F1C9A16C600FFA4A9 /* temp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = temp.m; sourceTree = "<group>"; };
+		193F94571C9AC2AA00D37658 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		7F6DF4DBC2ED796AD2C79A55 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D49D1903965AD4649B474492 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F791F2B6DC5FDB33E148EBD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +50,8 @@
 			children = (
 				1909F3D21C9A1603002A91B3 /* MobileDoorman */,
 				1909F3D11C9A1603002A91B3 /* Products */,
+				C780BCE025B2D62CA3A6B8AF /* Pods */,
+				3E6B04A4DE6D90D0E639F019 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,11 +69,31 @@
 				1909F3D31C9A1603002A91B3 /* AppDelegate.swift */,
 				1909F3D51C9A1603002A91B3 /* ViewController.swift */,
 				1909F3D71C9A1603002A91B3 /* Main.storyboard */,
+				193F94571C9AC2AA00D37658 /* Location.swift */,
+				192E078F1C9A16C600FFA4A9 /* temp.m */,
 				1909F3DA1C9A1603002A91B3 /* Assets.xcassets */,
 				1909F3DC1C9A1603002A91B3 /* LaunchScreen.storyboard */,
 				1909F3DF1C9A1603002A91B3 /* Info.plist */,
+				192E078E1C9A16C600FFA4A9 /* MobileDoorman-Bridging-Header.h */,
 			);
 			path = MobileDoorman;
+			sourceTree = "<group>";
+		};
+		3E6B04A4DE6D90D0E639F019 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0DFE9B55D60621E7D5D9EC93 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C780BCE025B2D62CA3A6B8AF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7F6DF4DBC2ED796AD2C79A55 /* Pods.debug.xcconfig */,
+				D49D1903965AD4649B474492 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +103,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1909F3E21C9A1603002A91B3 /* Build configuration list for PBXNativeTarget "MobileDoorman" */;
 			buildPhases = (
+				5B01910C1A628F7A7C0DCEE2 /* Check Pods Manifest.lock */,
 				1909F3CC1C9A1603002A91B3 /* Sources */,
 				1909F3CD1C9A1603002A91B3 /* Frameworks */,
 				1909F3CE1C9A1603002A91B3 /* Resources */,
+				B276B473864128ABBB3136D8 /* Embed Pods Frameworks */,
+				14D8EA5A925D50FC85616386 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -130,12 +165,62 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		14D8EA5A925D50FC85616386 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5B01910C1A628F7A7C0DCEE2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B276B473864128ABBB3136D8 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1909F3CC1C9A1603002A91B3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				192E07901C9A16C600FFA4A9 /* temp.m in Sources */,
 				1909F3D61C9A1603002A91B3 /* ViewController.swift in Sources */,
+				193F94581C9AC2AA00D37658 /* Location.swift in Sources */,
 				1909F3D41C9A1603002A91B3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,23 +330,30 @@
 		};
 		1909F3E31C9A1603002A91B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7F6DF4DBC2ED796AD2C79A55 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MobileDoorman/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thewcl.MobileDoorman;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MobileDoorman/MobileDoorman-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		1909F3E41C9A1603002A91B3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D49D1903965AD4649B474492 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = MobileDoorman/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.thewcl.MobileDoorman;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MobileDoorman/MobileDoorman-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -284,6 +376,7 @@
 				1909F3E41C9A1603002A91B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

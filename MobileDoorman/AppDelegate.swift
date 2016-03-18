@@ -9,13 +9,26 @@
 import UIKit
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        UIApplication.sharedApplication().registerUserNotificationSettings(
+            UIUserNotificationSettings(forTypes: .Alert, categories: nil))
+        
+//        let configuration = ParseClientConfiguration {
+//            $0.applicationId = "YOUR_APP_ID"
+//            $0.server = "http://YOUR_PARSE_SERVER:1337/parse"
+//        }
+//        Parse.initializeWithConfiguration(configuration)
+        
+        Parse.setApplicationId("v0C6KZHABaP43qOtwsXxqjnpTW2mQ1nxMgsKUItF", clientKey: "4bti4tx7aWe3KHAwPcD7AGDNkM3kbOgtHibnWtlp")
+        
+        Location.registerSubclass()
+        
+
         return true
     }
 
