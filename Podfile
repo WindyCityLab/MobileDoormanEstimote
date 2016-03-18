@@ -1,2 +1,5 @@
 pod 'EstimoteSDK'
 pod 'Parse'
+pod 'ParseUI'
+pod 'Fabric'
+pod 'Crashlytics'

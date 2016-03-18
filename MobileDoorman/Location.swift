@@ -15,18 +15,48 @@ class Location : PFObject, PFSubclassing
     }
     
     @NSManaged var name : String
-    @NSManaged var occupants : NSNumber
+    @NSManaged var occupants : [PFUser]
     
-    func incrementOccupant()
+    func addMeAsOccupant()
     {
-        self.incrementKey("occupants", byAmount: 1)
-        self.saveInBackground()
+        let query = Location.query()
+        query?.whereKey("occupants", equalTo: PFUser.currentUser()!)
+        query?.countObjectsInBackgroundWithBlock({ (result, error) -> Void in
+            if error == nil
+            {
+                if result == 0
+                {
+                    self.occupants.append((PFUser.currentUser()!))
+                    self.saveInBackground()
+                }
+            }
+        })
     }
     
-    func decrementOccupant()
+    func removeMeAsOccupant()
     {
-        self.incrementKey("occupants", byAmount: -1)
-        self.saveInBackground()
+        let query = Location.query()
+        query?.whereKey("occupants", equalTo: PFUser.currentUser()!)
+        query?.findObjectsInBackgroundWithBlock({ (results, error) -> Void in
+            for location in results as! [Location]
+            {
+                if location.objectId == self.objectId
+                {
+                    var allOccupants = location.occupants
+                    for i in 0 ..< location.occupants.count
+                    {
+                        if location.occupants[i].objectId == PFUser.currentUser()!.objectId
+                        {
+                            allOccupants.removeAtIndex(i)
+                            break;
+                        }
+                    }
+                    location.occupants = allOccupants
+                    self.occupants = allOccupants
+                    location.saveInBackground()
+                }
+            }
+        })
     }
-    
+        
 }
