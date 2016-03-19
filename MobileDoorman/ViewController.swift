@@ -48,7 +48,9 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate, PFLogInViewCon
         self.beaconManager.delegate = self
         self.beaconManager.requestAlwaysAuthorization()
         
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "timerFired:", userInfo: nil, repeats: true)
+        NSNotificationCenter.defaultCenter().addObserverForName(kNotificationSilentPush, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) -> Void in
+            self.checkParse()
+        }
     }
     
     @IBAction func logoutButtonTapped(sender: AnyObject) {
@@ -66,7 +68,7 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate, PFLogInViewCon
         logInController.dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func timerFired(timer : NSTimer)
+    func checkParse()
     {
         let query = Location.query()
         query?.getFirstObjectInBackgroundWithBlock({ (object, error) -> Void in
@@ -81,6 +83,7 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate, PFLogInViewCon
             }
         })
     }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -119,6 +122,11 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate, PFLogInViewCon
         }
     }
     
+    @IBAction func testButtonTapped(sender: AnyObject) {
+        PFCloud.callFunctionInBackground("testPush", withParameters: nil) { (result, error) -> Void in
+            
+        }
+    }
 //    func beaconManager(manager: AnyObject, didEnterRegion region: CLBeaconRegion) {
 //        print("did enter")
 //        let notification = UILocalNotification()

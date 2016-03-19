@@ -10,6 +10,8 @@ import UIKit
 import Fabric
 import Crashlytics
 
+let kNotificationSilentPush = "kNotificationSilentPush"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate {
 
@@ -25,6 +27,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
 //            $0.server = "http://YOUR_PARSE_SERVER:1337/parse"
 //        }
 //        Parse.initializeWithConfiguration(configuration)
+        
+        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
+        let pushNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+        application.registerUserNotificationSettings(pushNotificationSettings)
+        application.registerForRemoteNotifications()
         
         Parse.setApplicationId("v0C6KZHABaP43qOtwsXxqjnpTW2mQ1nxMgsKUItF", clientKey: "4bti4tx7aWe3KHAwPcD7AGDNkM3kbOgtHibnWtlp")
         
@@ -56,7 +63,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ESTBeaconManagerDelegate 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        print("registered for push notification successfully")
+        let installation = PFInstallation.currentInstallation()
+        installation.setDeviceTokenFromData(deviceToken)
+        installation.saveInBackground()
+    }
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print(error.localizedDescription)
+    }
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        PFPush.handlePush(userInfo)
+        print("got it!");
+        NSNotificationCenter.defaultCenter().postNotificationName(kNotificationSilentPush, object: nil)
+    }
 }
 

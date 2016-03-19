@@ -20,15 +20,21 @@ class Location : PFObject, PFSubclassing
     func addMeAsOccupant()
     {
         let query = Location.query()
-        query?.whereKey("occupants", equalTo: PFUser.currentUser()!)
-        query?.countObjectsInBackgroundWithBlock({ (result, error) -> Void in
-            if error == nil
+        query?.getFirstObjectInBackgroundWithBlock({ (result, error) -> Void in
+            var found = false;
+            let location = result as! Location
+            for user in location.occupants
             {
-                if result == 0
+                if user.objectId == PFUser.currentUser()!.objectId
                 {
-                    self.occupants.append((PFUser.currentUser()!))
-                    self.saveInBackground()
+                    found = true
+                    break;
                 }
+            }
+            if !found
+            {
+                location.occupants.append(PFUser.currentUser()!)
+                location.saveInBackground()
             }
         })
     }
