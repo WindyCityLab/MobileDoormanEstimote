@@ -8,16 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController, ESTBeaconManagerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate {
+class ViewController: UIViewController, ESTBeaconManagerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate, UITableViewDataSource, UITableViewDelegate {
 
     var location : Location?
     let beaconManager = ESTBeaconManager()
-    var timer : NSTimer! = nil
     let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, major: 12314, minor: 30949, identifier: "monitored region")
     
-    @IBOutlet weak var countLabel: UILabel!
+    var occupants : [PFUser] = Array()
     
     @IBOutlet weak var inOutSwitch: UISegmentedControl!
+    
+    @IBOutlet weak var tableView: UITableView!
     
     func checkForLogin()
     {
@@ -34,7 +35,6 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate, PFLogInViewCon
         else
         {
             self.beaconManager.startMonitoringForRegion(region)
-            
         }
 
     }
@@ -51,6 +51,10 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate, PFLogInViewCon
         NSNotificationCenter.defaultCenter().addObserverForName(kNotificationSilentPush, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) -> Void in
             self.checkParse()
         }
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        checkParse()
     }
     
     @IBAction func logoutButtonTapped(sender: AnyObject) {
@@ -71,6 +75,7 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate, PFLogInViewCon
     func checkParse()
     {
         let query = Location.query()
+        query?.includeKey("occupants")
         query?.getFirstObjectInBackgroundWithBlock({ (object, error) -> Void in
             if let _ = error
             {
@@ -79,7 +84,14 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate, PFLogInViewCon
             else
             {
                 let test = object as! Location
-                self.countLabel.text = String(test.occupants.count)
+                self.occupants.removeAll()
+                for user in test.occupants
+                {
+                    self.occupants.append(user)
+                    print(user.username)
+                }
+                self.title = String(self.occupants.count)
+                self.tableView.reloadData()
             }
         })
     }
@@ -100,6 +112,9 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate, PFLogInViewCon
         })
     }
 
+    @IBAction func refreshTapped(sender: AnyObject) {
+        checkParse()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -111,6 +126,7 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate, PFLogInViewCon
     @IBAction func buttonTapped(sender: AnyObject) {
         location?.addMeAsOccupant()
     }
+    
     func beaconManager(manager: AnyObject, didDetermineState state: CLRegionState, forRegion region: CLBeaconRegion) {
         print("Did determine state \(state.rawValue)")
         inOutSwitch.selectedSegmentIndex = state.rawValue;
@@ -121,27 +137,18 @@ class ViewController: UIViewController, ESTBeaconManagerDelegate, PFLogInViewCon
         case .Unknown : ()
         }
     }
-    
-    @IBAction func testButtonTapped(sender: AnyObject) {
-        PFCloud.callFunctionInBackground("testPush", withParameters: nil) { (result, error) -> Void in
-            
-        }
+}
+extension ViewController
+{
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("basicCell")
+        
+        cell?.textLabel?.text = occupants[indexPath.row].username
+        return cell!
     }
-//    func beaconManager(manager: AnyObject, didEnterRegion region: CLBeaconRegion) {
-//        print("did enter")
-//        let notification = UILocalNotification()
-//        notification.alertBody = "We are in proximity of the beacon"
-//        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
-//        location?.addMeAsOccupant()
-//    }
-//    
-//    func beaconManager(manager: AnyObject, didExitRegion region: CLBeaconRegion) {
-//        print("did exit")
-//        let notification = UILocalNotification()
-//        notification.alertBody = "We no longer see the beacon"
-//        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
-//        location?.removeMeAsOccupant()
-//    }
-
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return occupants.count
+    }
 }
 
