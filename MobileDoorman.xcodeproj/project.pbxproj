@@ -14,6 +14,7 @@
 		1909F3DE1C9A1603002A91B3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1909F3DC1C9A1603002A91B3 /* LaunchScreen.storyboard */; };
 		192E07901C9A16C600FFA4A9 /* temp.m in Sources */ = {isa = PBXBuildFile; fileRef = 192E078F1C9A16C600FFA4A9 /* temp.m */; };
 		193F94581C9AC2AA00D37658 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 193F94571C9AC2AA00D37658 /* Location.swift */; };
+		19554E2D1CC019930077CA7A /* OccupantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19554E2C1CC019930077CA7A /* OccupantViewController.swift */; };
 		4F791F2B6DC5FDB33E148EBD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DFE9B55D60621E7D5D9EC93 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		192E078E1C9A16C600FFA4A9 /* MobileDoorman-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MobileDoorman-Bridging-Header.h"; sourceTree = "<group>"; };
 		192E078F1C9A16C600FFA4A9 /* temp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = temp.m; sourceTree = "<group>"; };
 		193F94571C9AC2AA00D37658 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		19554E2C1CC019930077CA7A /* OccupantViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OccupantViewController.swift; sourceTree = "<group>"; };
 		7F6DF4DBC2ED796AD2C79A55 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D49D1903965AD4649B474492 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,6 +70,7 @@
 			children = (
 				1909F3D31C9A1603002A91B3 /* AppDelegate.swift */,
 				1909F3D51C9A1603002A91B3 /* ViewController.swift */,
+				19554E2C1CC019930077CA7A /* OccupantViewController.swift */,
 				1909F3D71C9A1603002A91B3 /* Main.storyboard */,
 				193F94571C9AC2AA00D37658 /* Location.swift */,
 				192E078F1C9A16C600FFA4A9 /* temp.m */,
@@ -237,6 +240,7 @@
 				1909F3D61C9A1603002A91B3 /* ViewController.swift in Sources */,
 				193F94581C9AC2AA00D37658 /* Location.swift in Sources */,
 				1909F3D41C9A1603002A91B3 /* AppDelegate.swift in Sources */,
+				19554E2D1CC019930077CA7A /* OccupantViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
